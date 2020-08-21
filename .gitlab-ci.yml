@@ -4,6 +4,7 @@ build:
     - linux
   variables:
     version: 5.9.1.1031110
+    DEBIAN_FRONTEND: noninteractive
   before_script:
     - export filename=URSim_Linux-$version.tar.gz
     - export url=https://s3-eu-west-1.amazonaws.com/ur-support-site/77055/$filename
