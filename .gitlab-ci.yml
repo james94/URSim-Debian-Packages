@@ -1,5 +1,5 @@
 build:
-  image: ubuntu:18.04
+  image: ubuntu:20.04
   tags:
     - linux
   variables:
@@ -34,6 +34,7 @@ build:
     - cp ursim/ursim-dependencies/libxmlrpc-c-ur* artifacts/
     - cp sdur-ursim5.9.1* artifacts/
     - cp sdur-ursim_$version-* artifacts/
+    - ls -hl artifacts
   artifacts:
     paths:
       - artifacts

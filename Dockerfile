@@ -1,4 +1,6 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Make sure the package repository is up to date.
 RUN apt-get update && apt-get -y upgrade && \
