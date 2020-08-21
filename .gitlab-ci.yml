@@ -1,0 +1,41 @@
+build:
+  image: ubuntu:18.04
+  tags:
+    - linux
+  variables:
+    version: 5.9.1.1031110
+  before_script:
+    - export filename=URSim_Linux-$version.tar.gz
+    - export url=https://s3-eu-west-1.amazonaws.com/ur-support-site/77055/$filename
+  script:
+    - apt-get update
+    - apt-get -y upgrade
+    - apt-get install -y --no-install-recommends
+      build-essential
+      debhelper
+      wget
+      patchelf
+      ca-certificates
+      lib32gcc1
+      lib32stdc++6
+      libc6-i386
+    - wget $url
+    - sha1sum $filename
+    - mv $filename sdur-ursim_$version.orig.tar.gz
+    - tar -xvzf sdur-ursim_$version.orig.tar.gz
+    - mv ursim-$version ursim
+    - dpkg -i ursim/ursim-dependencies/*amd64.deb
+    - cp -r debian ursim/debian
+    - cd ursim
+    - dpkg-buildpackage -uc -us
+    - cd ..
+    - mkdir artifacts
+    - cp ursim/ursim-dependencies/curl-* artifacts/
+    - cp ursim/ursim-dependencies/libxmlrpc-c-ur* artifacts/
+    - cp sdur-ursim5.9.1* artifacts/
+    - cp sdur-ursim_$version-* artifacts/
+  artifacts:
+    paths:
+      - artifacts
+    expire_in: 6 months
+

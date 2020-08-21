@@ -1,0 +1,38 @@
+Source: sdur-ursim
+Priority: optional
+Maintainer: SDU Robotics Software <sdur-software@tek.sdu.dk>
+Build-Depends: debhelper (>= 10), lib32gcc1, lib32stdc++6, libc6-i386, curl-dev-ur, libxmlrpc-c-dev-ur
+Standards-Version: 4.12
+Section: non-free/misc
+Homepage: https://www.universal-robots.com
+
+Package: sdur-ursim5.9.1
+Architecture: amd64
+Section: non-free/misc
+Priority: optional
+Depends: libjava3d-java, openjdk-8-jre, ${shlibs:Depends}
+Homepage: https://www.universal-robots.com
+Description: Universal Robots simulator software.
+ .
+ With this software installed it is possible to create and run programs
+ on a simulated robot, with some limitations. The most important of these
+ limitations is that it is not possible to simulate digital/analogue
+ input to the robot. Furthermore touch screen set-up and network set-up
+ from within the GUI won't work. The robot is able to communicate via
+ TCP/IP, if this is configured on the host machine.
+
+Package: sdur-ursim
+Architecture: amd64
+Section: non-free/misc
+Priority: optional
+Depends: sdur-ursim5.9.1
+Homepage: https://www.universal-robots.com
+Description:  Metapackage that install latest version of UR Sim simulator.
+ Universal Robots simulator software.
+ .
+ With this software installed it is possible to create and run programs
+ on a simulated robot, with some limitations. The most important of these
+ limitations is that it is not possible to simulate digital/analogue
+ input to the robot. Furthermore touch screen set-up and network set-up
+ from within the GUI won't work. The robot is able to communicate via
+ TCP/IP, if this is configured on the host machine.

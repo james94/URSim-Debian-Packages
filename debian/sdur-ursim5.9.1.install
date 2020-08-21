@@ -1,0 +1,3 @@
+opt/ursim/*
+#etc/runit/runsvdir-ursim-*
+usr/share/applications/ursim*.desktop

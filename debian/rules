@@ -1,0 +1,80 @@
+#!/usr/bin/make -f
+export DEB_BUILD_OPTIONS=noddebs
+export VERSION=5.9.1
+export URSIM_ROOT=/opt/ursim/$(VERSION)/
+
+%:
+	dh $@
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l/opt/urtool-3.0/lib -a
+
+override_dh_strip: 
+	dh_strip --exclude=URControl
+
+override_dh_auto_install:
+	mkdir -p debian/tmp$(URSIM_ROOT)
+#	cp install.sh debian/tmp$(URSIM_ROOT)
+	cp metadata.n3 debian/tmp$(URSIM_ROOT)
+	cp starturcontrol.sh debian/tmp$(URSIM_ROOT)
+	cp start-ursim.sh debian/tmp$(URSIM_ROOT)
+	cp stopurcontrol.sh debian/tmp$(URSIM_ROOT)
+	cp ur-serial.UR* debian/tmp$(URSIM_ROOT)
+#	cp ursim-certificate-check.sh debian/tmp$(URSIM_ROOT)
+	cp ursim-icon.png debian/tmp$(URSIM_ROOT)
+	cp version.sh debian/tmp$(URSIM_ROOT)
+	cp URControl debian/tmp$(URSIM_ROOT)
+	cp -r GUI debian/tmp$(URSIM_ROOT)
+	cp -r programs.UR* debian/tmp$(URSIM_ROOT)
+#	cp -r ursim-dependencies debian/tmp$(URSIM_ROOT)
+#	cp -r .certificate debian/tmp$(URSIM_ROOT)
+	cp -r .urcaps debian/tmp$(URSIM_ROOT)
+	cp -r .urcontrol debian/tmp$(URSIM_ROOT)
+
+#	mkdir -p debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)
+#	echo '#!/bin/sh' | tee debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)/run >/dev/null
+#	echo 'exec 2>&1' | tee -a debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)/run >/dev/null
+#	echo "exec chpst -uroot runsvdir $(URSIM_ROOT)service" | tee -a debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)/run >/dev/null
+#	chmod +x debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)/run
+#
+##	ln -sf /etc/runit/runsvdir-ursim-$(VERSION) debian/tmp/etc/service
+#	mkdir -p debian/tmp$(URSIM_ROOT)service
+
+	mkdir -p debian/tmp/usr/share/applications
+
+	echo "[Desktop Entry]" > debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+	echo "Version=$(VERSION)" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+	echo "Type=Application" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+	echo "Terminal=false" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+	echo "Name=ursim-$(VERSION) UR3" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+	echo "Exec=$(URSIM_ROOT)start-ursim.sh UR3" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+	echo "Icon=$(URSIM_ROOT)ursim-icon.png" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR3.desktop
+
+	echo "[Desktop Entry]" > debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+	echo "Version=$(VERSION)" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+	echo "Type=Application" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+	echo "Terminal=false" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+	echo "Name=ursim-$(VERSION) UR5" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+	echo "Exec=$(URSIM_ROOT)start-ursim.sh UR5" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+	echo "Icon=$(URSIM_ROOT)ursim-icon.png" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR5.desktop
+
+	echo "[Desktop Entry]" > debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+	echo "Version=$(VERSION)" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+	echo "Type=Application" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+	echo "Terminal=false" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+	echo "Name=ursim-$(VERSION) UR10" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+	echo "Exec=$(URSIM_ROOT)start-ursim.sh UR10" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+	echo "Icon=$(URSIM_ROOT)ursim-icon.png" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR10.desktop
+
+	echo "[Desktop Entry]" > debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+	echo "Version=$(VERSION)" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+	echo "Type=Application" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+	echo "Terminal=false" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+	echo "Name=ursim-$(VERSION) UR16" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+	echo "Exec=$(URSIM_ROOT)start-ursim.sh UR16" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+	echo "Icon=$(URSIM_ROOT)ursim-icon.png" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
+
+	patchelf --set-rpath /opt/urtool-3.0/lib debian/tmp/opt/ursim/5.9.1/URControl 
+
+# install certificate into /etc/ssl/certs/java/cacerts
+# added with sudo keytool -import -trustcacerts -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -alias ur_robot_root_certificate -file /opt/ursim/5.5.1/.certificate/URRobotRoot.crt
