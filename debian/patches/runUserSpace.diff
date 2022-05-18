@@ -5,6 +5,7 @@ Index: ursim/start-ursim.sh
 +++ ursim/start-ursim.sh
 @@ -9,7 +9,6 @@ pushd $URSIM_ROOT &>/dev/null
  CLASSPATH=$(echo $URSIM_ROOT/lib/*.jar | tr ' ' ':')
++export PATH=/opt/ursim/5.11.11/bin/:$PATH
  
  ./stopurcontrol.sh
 -./starturcontrol.sh
@@ -28,20 +29,20 @@ Index: ursim/start-ursim.sh
 +rm -f $CONFIG_ROOT/.urcontrol/urcontrol.conf
 +ln -s $CONFIG_ROOT/.urcontrol/urcontrol.conf.$ROBOT_TYPE $CONFIG_ROOT/.urcontrol/urcontrol.conf
 +
-+if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size0_G5_rev1.conf" ]; then
-+    ln -s $URSIM_ROOT/.urcontrol/joint_size0_G5_rev1.conf $CONFIG_ROOT/.urcontrol/joint_size0_G5_rev1.conf
++if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size0.conf" ]; then
++    ln -s $URSIM_ROOT/.urcontrol/joint_size0.conf $CONFIG_ROOT/.urcontrol/joint_size0.conf
 +fi
-+if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size1_G5_rev1.conf" ]; then
-+    ln -s $URSIM_ROOT/.urcontrol/joint_size1_G5_rev1.conf $CONFIG_ROOT/.urcontrol/joint_size1_G5_rev1.conf
++if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size1.conf" ]; then
++    ln -s $URSIM_ROOT/.urcontrol/joint_size1.conf $CONFIG_ROOT/.urcontrol/joint_size1.conf
 +fi
-+if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size2_G5_rev1.conf" ]; then
-+    ln -s $URSIM_ROOT/.urcontrol/joint_size2_G5_rev1.conf $CONFIG_ROOT/.urcontrol/joint_size2_G5_rev1.conf
++if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size2.conf" ]; then
++    ln -s $URSIM_ROOT/.urcontrol/joint_size2.conf $CONFIG_ROOT/.urcontrol/joint_size2.conf
 +fi
-+if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size3_G5_rev1.conf" ]; then
-+    ln -s $URSIM_ROOT/.urcontrol/joint_size3_G5_rev1.conf $CONFIG_ROOT/.urcontrol/joint_size3_G5_rev1.conf
++if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size3.conf" ]; then
++    ln -s $URSIM_ROOT/.urcontrol/joint_size3.conf $CONFIG_ROOT/.urcontrol/joint_size3.conf
 +fi
-+if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size4_G5_rev1.conf" ]; then
-+    ln -s $URSIM_ROOT/.urcontrol/joint_size4_G5_rev1.conf $CONFIG_ROOT/.urcontrol/joint_size4_G5_rev1.conf
++if [ ! -f "$CONFIG_ROOT/.urcontrol/joint_size4.conf" ]; then
++    ln -s $URSIM_ROOT/.urcontrol/joint_size4.conf $CONFIG_ROOT/.urcontrol/joint_size4.conf
 +fi
  
  #ur-serial
