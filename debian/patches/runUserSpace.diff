@@ -3,16 +3,23 @@ Index: ursim/start-ursim.sh
 ===================================================================
 --- ursim.orig/start-ursim.sh
 +++ ursim/start-ursim.sh
-@@ -9,7 +9,6 @@ pushd $URSIM_ROOT &>/dev/null
- CLASSPATH=$(echo $URSIM_ROOT/lib/*.jar | tr ' ' ':')
+@@ -1,6 +1,7 @@
+ #!/bin/bash
+ 
+ export LD_LIBRARY_PATH=/opt/urtool-3.0/lib
 +export PATH=/opt/ursim/5.11.11/bin/:$PATH
+ 
+ URSIM_ROOT=$(dirname $(readlink -f $0))
+ 
+@@ -9,7 +10,6 @@ pushd $URSIM_ROOT &>/dev/null
+ CLASSPATH=$(echo $URSIM_ROOT/lib/*.jar | tr ' ' ':')
  
  ./stopurcontrol.sh
 -./starturcontrol.sh
  
  ROBOT_TYPE="UR5"
  if [ "$1" == "UR10" ] ; then
-@@ -22,35 +21,89 @@ fi
+@@ -22,35 +22,90 @@ fi
  
  #Setting up the configuration files according to the robot type
  #urcontrol.conf

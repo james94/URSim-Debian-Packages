@@ -30,6 +30,7 @@ override_dh_auto_install:
 #	cp -r .certificate debian/tmp$(URSIM_ROOT)
 	cp -r .urcaps debian/tmp$(URSIM_ROOT)
 	cp -r .urcontrol debian/tmp$(URSIM_ROOT)
+	cp -r usr/bin debian/tmp$(URSIM_ROOT)
 
 #	mkdir -p debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)
 #	echo '#!/bin/sh' | tee debian/tmp/etc/runit/runsvdir-ursim-$(VERSION)/run >/dev/null
