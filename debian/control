@@ -6,7 +6,7 @@ Standards-Version: 4.12
 Section: non-free/misc
 Homepage: https://www.universal-robots.com
 
-Package: sdur-ursim5.9.1
+Package: sdur-ursim5.11.11
 Architecture: amd64
 Section: non-free/misc
 Priority: optional
@@ -25,7 +25,7 @@ Package: sdur-ursim
 Architecture: amd64
 Section: non-free/misc
 Priority: optional
-Depends: sdur-ursim5.9.1
+Depends: sdur-ursim5.11.11
 Homepage: https://www.universal-robots.com
 Description:  Metapackage that install latest version of UR Sim simulator.
  Universal Robots simulator software.
