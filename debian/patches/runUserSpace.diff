@@ -121,11 +121,11 @@ Index: ursim/start-ursim.sh
 +rm -f $CONFIG_ROOT/ur-serial
 +rm -f $CONFIG_ROOT/.urcontrol/safety.conf
 +rm -f $CONFIG_ROOT/programs
- 
--popd &>/dev/null
++
 +./stopurcontrol.sh
+
+ popd &>/dev/null
  
-+popd &>/dev/null
 Index: ursim/starturcontrol.sh
 ===================================================================
 --- ursim.orig/starturcontrol.sh
