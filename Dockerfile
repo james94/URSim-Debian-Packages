@@ -15,9 +15,10 @@ RUN apt-get update && apt-get -y upgrade && \
     lib32stdc++6 \
     libc6-i386
  
-ARG version=5.11.11.1010533
+#ARG version=5.11.11.1010533
+ARG version=5.12.2.1101534
 ARG filename=URSim_Linux-$version.tar.gz
-ARG url=https://s3-eu-west-1.amazonaws.com/ur-support-site/159649/$filename
+ARG url=https://s3-eu-west-1.amazonaws.com/ur-support-site/168410/$filename
 
 RUN wget $url && \
     mv $filename sdur-ursim_$version.orig.tar.gz && \

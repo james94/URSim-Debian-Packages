@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 export DEB_BUILD_OPTIONS=noddebs
-export VERSION=5.11.11
+export VERSION=5.12.2
 export URSIM_ROOT=/opt/ursim/$(VERSION)/
 
 %:
@@ -75,7 +75,7 @@ override_dh_auto_install:
 	echo "Exec=$(URSIM_ROOT)start-ursim.sh UR16" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
 	echo "Icon=$(URSIM_ROOT)ursim-icon.png" >> debian/tmp/usr/share/applications/ursim-$(VERSION).UR16.desktop
 
-	patchelf --set-rpath /opt/urtool-3.0/lib debian/tmp/opt/ursim/5.11.11/URControl 
+	patchelf --set-rpath /opt/urtool-3.0/lib debian/tmp/opt/ursim/5.12.2/URControl 
 
 # install certificate into /etc/ssl/certs/java/cacerts
 # added with sudo keytool -import -trustcacerts -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -alias ur_robot_root_certificate -file /opt/ursim/5.5.1/.certificate/URRobotRoot.crt

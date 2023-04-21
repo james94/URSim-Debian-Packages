@@ -1,3 +1,0 @@
-#!/bin/sh
-set -e
-setcap CAP_NET_BIND_SERVICE=+ep /opt/ursim/5.11.11/URControl
