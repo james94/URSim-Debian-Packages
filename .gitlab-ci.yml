@@ -33,7 +33,7 @@ build:
     - mkdir artifacts
     - cp ursim/ursim-dependencies/curl-* artifacts/
     - cp ursim/ursim-dependencies/libxmlrpc-c-ur* artifacts/
-    - cp sdur-ursim5.11.11* artifacts/
+    - cp sdur-ursim5.12.2* artifacts/
     - cp sdur-ursim_$version-* artifacts/
     - ls -hl artifacts
   artifacts:
