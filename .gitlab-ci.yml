@@ -3,11 +3,11 @@ build:
   tags:
     - linux
   variables:
-    version: 5.11.11.1010533
+    version: 5.12.2.1101534
     DEBIAN_FRONTEND: noninteractive
   before_script:
     - export filename=URSim_Linux-$version.tar.gz
-    - export url=https://s3-eu-west-1.amazonaws.com/ur-support-site/159649/$filename
+    - export url=https://s3-eu-west-1.amazonaws.com/ur-support-site/168410/$filename
   script:
     - apt-get update
     - apt-get -y upgrade

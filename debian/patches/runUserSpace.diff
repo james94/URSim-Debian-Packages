@@ -7,7 +7,7 @@ Index: ursim/start-ursim.sh
  #!/bin/bash
  
  export LD_LIBRARY_PATH=/opt/urtool-3.0/lib
-+export PATH=/opt/ursim/5.11.11/bin/:$PATH
++export PATH=/opt/ursim/5.12.2/bin/:$PATH
  
  URSIM_ROOT=$(dirname $(readlink -f $0))
  
